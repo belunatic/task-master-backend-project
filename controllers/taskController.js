@@ -89,16 +89,16 @@ const deleteTask = async (req, res) => {
 		}
 		//find the project owner
 		const projectId = getDeleteTask.project;
-		console.log(projectId);
-		const getUpdateProject = await Project.findById(projectId);
-		if (!getUpdateProject) {
+		// console.log(projectId);
+		const getProject = await Project.findById(projectId);
+		if (!getProject) {
 			return res.status(400).json({ message: "Invalid project ID" });
 		}
 		// check if the user field on that task matches the authenticated user’s _id.
 		if (getUpdateProject.user.toString() !== req.user._id) {
 			return res
 				.status(403)
-				.json({ message: "Not Authorize to update this task" });
+				.json({ message: "Not Authorize to delete this task" });
 		}
 		const task = await Task.findByIdAndDelete(req.params.taskId);
 		if (!task) {
