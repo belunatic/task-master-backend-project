@@ -39,6 +39,12 @@ async function registerUser(req, res) {
 		});
 	} catch (error) {
 		console.log(error.message);
+		//check for username duplication error
+		if (error.code === 11000) {
+			res.status(400).json({ message: "Username already in use" });
+		} else {
+			res.status(500).send("An unexpected error occurred.");
+		}
 	}
 }
 
