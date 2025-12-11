@@ -1,50 +1,65 @@
-# Express Auth Email Backend Template
+# Task Management Backend
 
 ## Overview
 
-## Summary
+This is the **backend API** for the Task Management System.  
+It provides secure endpoints for user authentication, project management, and task management, built with **Node.js**, **Express**, **passport**, and **Mongoose**.
 
-A minimal Express backend template implementing secure user authentication with email verification, intended for rapid prototyping of auth flows using MongoDB, JWTs, and bcrypt. It provides registration, email verification, JWT-protected routes, and simple project/task management primitives you can extend.
+## 🛠️ Tech Stack
 
-### Key features
+- **Runtime:** Node.js
+- **Framework:** Express.js
+- **Database:** MongoDB with Mongoose ODM
+- **Authentication:** JWT, Passport (GitHub OAuth)
+- **Middleware:** Custom `authMiddleware`, `adminOnly`
 
-- User registration with email verification
-- Login with JWT access tokens
-- Password hashing (bcrypt)
-- Token-based protected routes
+## 🚀 Getting Started
 
-### Quick start
+1. Clone the repository:
+   `git clone https://github.com/belunatic/task-master-backend-project`
 
-1. Install dependencies: npm install
-2. Create a .env file (MONGO_URI, JWT_SECRET)
-3. Start in dev: npm run dev
+2. `npm install`
+3. Set up environment variables in .env
+
+```
+    FRONTEND_URL = http://localhost:5173
+    MONGO_URI=your_mongodb_connection_string
+    JWT_SECRET=your_secret_key
+    GITHUB_CLIENT_ID=your_client_id
+    GITHUB_CLIENT_SECRET=your_client_secret
+    GITHUB_CALLBACK_URL = github_callback
+
+```
+
+4. Run the server `npm run dev`
+
+## Frontend Repo
+
+[Task Master Frontend Repo Link](https://github.com/belunatic/task-master-frontend-project)
 
 ### Routes (routes folder)
 
-- routes/users.js
+- routes/userRoutes.js
 
   - POST /auth/register — Register a new user and send email verification
   - POST /auth/login — Authenticate and return access (and optional refresh) token
-
   - routes/taskRoute.js
 
-    - GET /projects/:projectId/tasks — List tasks (protected).
-    - POST /projects/:projectId/tasks — Create a new task (protected).
-    - PUT /tasks/:taskId — Replace/update a task (protected).
-    - DELETE /projects/:projectId/members/:userId — Remove a member from a project (protected)
+- routes/taskRoutes.js
 
-  - routes/projectRoutes.js
-    - GET /projects — List projects by the login user (protected).
-    - POST /projects — Create a new project (protected).
-    - GET /projects/:id — Get project details by ID (protected)
-    - PUT /projects/:id — Update a project (protected)
-    - DELETE /projects/:id — Delete a project (protected)
-    - DELETE /projects/:id/members/:userId — Remove a member from a project (protected)
-    - GET /projects/:id/tasks — List tasks for a project (protected) — can delegate to /tasks with projectId filter
+  - GET /projects/:projectId/tasks — List tasks (protected).
+  - POST /projects/:projectId/tasks — Create a new task (protected).
+  - PUT /tasks/:taskId — Replace/update a task (protected).
+  - DELETE /projects/:projectId/members/:userId — Remove a member from a project (protected)
 
-### Intended use
-
-Serve as a starter backend for apps that need secure user authentication and email-based account verification, easily extended for additional user management and business logic.
+- routes/projectRoutes.js
+  - GET /projects — List projects by the login user (protected).
+  - POST /projects — Create a new project (protected).
+  - GET /projects/:id — Get project details by ID (protected)
+  - PUT /projects/:id — Update a project (protected)
+  - DELETE /projects/:id — Delete a project (protected)
+  - DELETE /projects/:id/members/:userId — Remove a member from a project (protected)
+  - GET /projects/:id/tasks — List tasks for a project (protected) — can delegate to /tasks with projectId filter
 
 ## Dependencies
 
