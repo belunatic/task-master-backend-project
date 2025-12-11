@@ -95,7 +95,7 @@ const deleteTask = async (req, res) => {
 			return res.status(400).json({ message: "Invalid project ID" });
 		}
 		// check if the user field on that task matches the authenticated user’s _id.
-		if (getUpdateProject.user.toString() !== req.user._id) {
+		if (getProject.user.toString() !== req.user._id) {
 			return res
 				.status(403)
 				.json({ message: "Not Authorize to delete this task" });
