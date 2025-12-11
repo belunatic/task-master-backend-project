@@ -22,7 +22,7 @@ It provides secure endpoints for user authentication, project management, and ta
 3. Set up environment variables in .env
 
 ```
-    FRONTEND_URL = http://localhost:5173
+    FRONTEND_URL = http://localhost:5173 //local dev
     MONGO_URI=your_mongodb_connection_string
     JWT_SECRET=your_secret_key
     GITHUB_CLIENT_ID=your_client_id
@@ -43,7 +43,6 @@ It provides secure endpoints for user authentication, project management, and ta
 
   - POST /auth/register — Register a new user and send email verification
   - POST /auth/login — Authenticate and return access (and optional refresh) token
-  - routes/taskRoute.js
 
 - routes/taskRoutes.js
 
