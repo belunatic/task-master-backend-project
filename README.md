@@ -5,6 +5,9 @@
 This is the **backend API** for the Task Management System.  
 It provides secure endpoints for user authentication, project management, and task management, built with **Node.js**, **Express**, **passport**, and **Mongoose**.
 
+[Start the Back-end](https://task-master-frontend-project.netlify.app/projects)
+[Front-end Link](https://task-master-frontend-project.netlify.app/projects)
+
 ## 🛠️ Tech Stack
 
 - **Runtime:** Node.js
